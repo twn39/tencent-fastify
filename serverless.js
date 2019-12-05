@@ -12,7 +12,7 @@ module.exports = class TencentFastify extends Component {
         inputs.name =
             ensureString(inputs.functionName, { isOptional: true }) ||
             this.state.functionName ||
-            `KoaComponent_${random({ length: 6 })}`;
+            `FastifyComponent_${random({ length: 6 })}`;
         inputs.codeUri = ensureString(inputs.code, { isOptional: true }) || process.cwd();
         inputs.region = ensureString(inputs.region, { default: 'ap-guangzhou' });
         inputs.include = ensureIterable(inputs.include, { default: [], ensureItem: ensureString });
@@ -25,6 +25,8 @@ module.exports = class TencentFastify extends Component {
 
         inputs.exclude.push('.git/**', '.gitignore', '.serverless', '.DS_Store');
 
+        const filePath = path.resolve(__dirname, 'lambda.js');
+        inputs.include.push(filePath);
         inputs.handler = 'lambda.handler';
         inputs.runtime = 'Nodejs8.9';
 
@@ -37,7 +39,7 @@ module.exports = class TencentFastify extends Component {
             if (inputs.functionConf.environment) inputs.environment = inputs.functionConf.environment;
             if (inputs.functionConf.vpcConfig) inputs.vpcConfig = inputs.functionConf.vpcConfig;
         }
-        this.context.debug(inputs);
+        this.context.debug(JSON.stringify(inputs));
 
         const tencentCloudFunctionOutputs = await tencentCloudFunction(inputs);
         const apigwParam = {
@@ -63,7 +65,7 @@ module.exports = class TencentFastify extends Component {
 
         this.state.functionName = inputs.name;
         await this.save();
-        this.context.debug(apigwParam);
+        this.context.debug(JSON.stringify(apigwParam));
         const tencentApiGatewayOutputs = await tencentApiGateway(apigwParam);
         return {
             region: inputs.region,
