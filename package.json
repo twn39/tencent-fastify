@@ -1,5 +1,5 @@
 {
-  "name": "fastifyapp",
+  "name": "@serverless/tencent-fastify",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,6 @@
     "aws-lambda-fastify": "^1.3.0",
     "aws-serverless-express": "^3.3.6",
     "ext": "^1.4.0",
-    "fastify": "^2.10.0",
     "fs-extra": "^8.1.0",
     "terser": "^4.4.2",
     "type": "^2.0.0",
