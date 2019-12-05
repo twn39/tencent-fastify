@@ -1,0 +1,4 @@
+/.env_temp
+/.idea
+/node_modules
+/.serverless
