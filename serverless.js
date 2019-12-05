@@ -39,7 +39,6 @@ module.exports = class TencentFastify extends Component {
             if (inputs.functionConf.environment) inputs.environment = inputs.functionConf.environment;
             if (inputs.functionConf.vpcConfig) inputs.vpcConfig = inputs.functionConf.vpcConfig;
         }
-        this.context.debug(JSON.stringify(inputs));
 
         const tencentCloudFunctionOutputs = await tencentCloudFunction(inputs);
         const apigwParam = {
@@ -65,7 +64,6 @@ module.exports = class TencentFastify extends Component {
 
         this.state.functionName = inputs.name;
         await this.save();
-        this.context.debug(JSON.stringify(apigwParam));
         const tencentApiGatewayOutputs = await tencentApiGateway(apigwParam);
         return {
             region: inputs.region,

@@ -1,8 +1,16 @@
 {
   "name": "@serverless/tencent-fastify",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "serverless tencent fastify component",
+  "keywords": [
+    "serverless",
+    "fastify",
+    "component",
+    "tencent",
+    "function",
+    "lambda"
+  ],
+  "main": "serverless.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

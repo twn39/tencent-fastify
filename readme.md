@@ -1,0 +1,1 @@
+Serverless tencent fastify component.
