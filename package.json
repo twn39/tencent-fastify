@@ -1,5 +1,5 @@
 {
-  "name": "@curry/tencent-fastify",
+  "name": "@twn39/tencent-fastify",
   "version": "1.0.0",
   "description": "serverless tencent fastify component",
   "keywords": [
@@ -24,5 +24,14 @@
     "aws-lambda-fastify": "^1.3.0",
     "ext": "^1.4.0",
     "type": "^2.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twn39/tencent-fastify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/twn39/tencent-fastify/issues"
+  },
+  "homepage": "https://github.com/twn39/tencent-fastify#readme"
 }
