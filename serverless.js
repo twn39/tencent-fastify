@@ -26,7 +26,9 @@ module.exports = class TencentFastify extends Component {
         inputs.exclude.push('.git/**', '.gitignore', '.serverless', '.DS_Store');
 
         const filePath = path.resolve(__dirname, 'lambda.js');
+        const lambdaFastifyPath = path.resolve(__dirname, 'aws-lambda-fastify.js');
         inputs.include.push(filePath);
+        inputs.include.push(lambdaFastifyPath);
         inputs.handler = 'lambda.handler';
         inputs.runtime = 'Nodejs8.9';
 
