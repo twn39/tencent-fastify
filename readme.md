@@ -15,11 +15,6 @@ npm install -g serverless
 ```
 npm i --save fastify
 ```
-3. install serverless component
-```
-npm i --save @twn39/tencent-fastify
-```
-
 
 ### Configure
 
