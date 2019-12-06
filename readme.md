@@ -33,7 +33,6 @@ if (require.main === module) {
     console.log('server listening on 3000');
   });
 } else {
-  // required as a module => executed on aws lambda
   module.exports = app;
 }
 ```
