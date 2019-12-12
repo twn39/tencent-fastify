@@ -38,11 +38,6 @@ module.exports = (app, options) => (event, context, callback) => {
                     headers: {},
                 });
             }
-            // chunked transfer not currently supported by API Gateway
-            if (headers['transfer-encoding'] === 'chunked')
-                delete headers['transfer-encoding'];
-            if (headers['Transfer-Encoding'] === 'chunked')
-                delete headers['Transfer-Encoding'];
 
             let multiValueHeaders;
             Object.keys(res.headers).forEach(h => {
