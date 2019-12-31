@@ -1,6 +1,6 @@
 {
     "name": "@twn39/tencent-fastify",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "serverless tencent fastify component",
     "keywords": [
         "serverless",
