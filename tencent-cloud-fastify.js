@@ -1,10 +1,4 @@
-module.exports = (app, options) => (event, context, callback) => {
-    options = options || {};
-    options.binaryMimeTypes = options.binaryMimeTypes || [];
-    if (options.callbackWaitsForEmptyEventLoop !== undefined) {
-        context.callbackWaitsForEmptyEventLoop =
-            options.callbackWaitsForEmptyEventLoop;
-    }
+module.exports = (app) => (event, context) => {
     event.body = event.body || '';
 
     const method = event.httpMethod;
@@ -28,7 +22,7 @@ module.exports = (app, options) => (event, context, callback) => {
             headers['x-request-id'] || event.requestContext.requestId;
     }
 
-    const prom = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         app.inject({ method, url, query, payload, headers }, (err, res) => {
             if (err) {
                 console.error(err);
@@ -39,36 +33,13 @@ module.exports = (app, options) => (event, context, callback) => {
                 });
             }
 
-            let multiValueHeaders;
-            Object.keys(res.headers).forEach(h => {
-                if (Array.isArray(res.headers[h])) {
-                    if (h.toLowerCase() === 'set-cookie') {
-                        multiValueHeaders = multiValueHeaders || {};
-                        multiValueHeaders[h] = res.headers[h];
-                        delete res.headers[h];
-                    } else res.headers[h] = res.headers[h].join(',');
-                }
-            });
-
-            const contentType = (
-                res.headers['content-type'] ||
-                res.headers['Content-Type'] ||
-                ''
-            ).split(';')[0];
-            const isBase64Encoded =
-                options.binaryMimeTypes.indexOf(contentType) > -1;
-
             const ret = {
                 statusCode: res.statusCode,
-                body: isBase64Encoded
-                    ? res.rawPayload.toString('base64')
-                    : res.payload,
+                body: res.payload,
                 headers: res.headers,
-                isBase64Encoded,
+                isBase64Encoded: false,
             };
             resolve(ret);
         });
     });
-    if (!callback) return prom;
-    prom.then(ret => callback(null, ret)).catch(callback);
 };

@@ -42,7 +42,7 @@ module.exports = class TencentFastify extends Component {
             if (inputs.functionConf.vpcConfig) inputs.vpcConfig = inputs.functionConf.vpcConfig;
         }
 
-        inputs.fromClientRemark = inputs.fromClientRemark || 'tencent-fastify'
+        inputs.fromClientRemark = inputs.fromClientRemark || 'tencent-fastify';
         const tencentCloudFunctionOutputs = await tencentCloudFunction(inputs);
         const apigwParam = {
             serviceName: inputs.serviceName,
