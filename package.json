@@ -1,6 +1,6 @@
 {
     "name": "@twn39/tencent-fastify",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "serverless tencent fastify component",
     "keywords": [
         "serverless",
@@ -19,8 +19,8 @@
     "license": "ISC",
     "dependencies": {
         "@serverless/core": "^1.1.2",
-        "@serverless/tencent-apigateway": "^1.9.10",
-        "@serverless/tencent-scf": "^2.0.2",
+        "@serverless/tencent-apigateway": "^2.0.4",
+        "@serverless/tencent-scf": "^2.0.9",
         "ext": "^1.4.0",
         "type": "^2.0.0"
     },
